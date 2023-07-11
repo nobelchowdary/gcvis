@@ -19,7 +19,9 @@ const (
 		{ label: "scvg.idle", data: {{ .ScvgIdle }} },
 		{ label: "scvg.sys", data: {{ .ScvgSys }} },
 		{ label: "scvg.released", data: {{ .ScvgReleased }} },
-		{ label: "scvg.consumed", data: {{ .ScvgConsumed }} }
+		{ label: "scvg.consumed", data: {{ .ScvgConsumed }} },
+		{ label: "Stacks", data: {{ .Stacks}} },
+		{ label: "Globals", data: {{.Globals}} },
 	];
 
 	var datagraph_options = {
@@ -180,7 +182,9 @@ const (
 					{ label: "scvg.idle", data: graphData.ScvgIdle },
 					{ label: "scvg.sys", data: graphData.ScvgSys },
 					{ label: "scvg.released", data: graphData.ScvgReleased },
-					{ label: "scvg.consumed", data: graphData.ScvgConsumed }
+					{ label: "scvg.consumed", data: graphData.ScvgConsumed },
+					{ label: "Stacks", 			   data: graphData.Stacks },
+					{ label: "Globals",            data: graphData.Globals },
 				];
 				var clockgraph_data = [
 					{ label: "STW sweep clock",    data: graphData.STWSclock },
@@ -334,6 +338,8 @@ dd { margin-left: 160px; }
 <dt>scvg.sys      </dt><dd> virtual memory requested from the operating system (should aproximate VSS)</dd>
 <dt>scvg.released </dt><dd> virtual memory returned to the operating system by the scavenger</dd>
 <dt>scvg.consumed </dt><dd> virtual memory in use (should roughly match process RSS)</dd>
+<dt>Stacks 		  </dt><dd> stack to store local variables</dd>
+<dt>Globals		  </dt><dd> global variables declared outside any function</dd>
 
 <dt>STW sweep clock   </dt><dd>stop-the-world sweep clock time</dd>
 <dt>con mas clock     </dt><dd>concurrent mark and scan clock time</dd>
@@ -343,7 +349,6 @@ dd { margin-left: 160px; }
 <dt>con mas bg cpu    </dt><dd>concurrent mark and scan - background GC cpu time</dd>
 <dt>con mas idle cpu  </dt><dd>concurrent mark and scan - idle GC cpu time</dd>
 <dt>STW mark cpu      </dt><dd>stop-the-world mark cpu time</dd>
-</dl>
 
 </pre>
 </body>
